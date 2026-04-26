@@ -21,6 +21,18 @@ const calcularTotal = () => {
   totalGastos.textContent = `$${total}`;
 };
 
+// Eliminar un gasto
+const eliminarGasto = (id) => {
+  const indice = gastos.findIndex((gasto) => gasto.id === id);
+
+  if (indice !== -1) {
+    gastos.splice(indice, 1);
+  }
+
+  renderizarGastos();
+  calcularTotal();
+};
+
 // Renderizar gastos
 const renderizarGastos = () => {
   listaGastos.innerHTML = "";
@@ -42,7 +54,15 @@ const renderizarGastos = () => {
         <p class="text-sm text-[#555555]">Gasto registrado</p>
       </div>
 
-      <p class="font-bold text-[#141413]">$${gasto.precio}</p>
+      <div class="flex items-center gap-4">
+        <p class="font-bold text-[#141413]">$${gasto.precio}</p>
+        <button
+          class="rounded-[20px] bg-[#CF4500] px-4 py-2 text-sm text-white cursor-pointer"
+          onclick="eliminarGasto(${gasto.id})"
+        >
+          Eliminar
+        </button>
+      </div>
     `;
 
     listaGastos.appendChild(gastoElemento);
@@ -59,6 +79,7 @@ formGasto.addEventListener("submit", (event) => {
   }
 
   const gasto = {
+    id: Date.now(),
     nombre: nombreGasto.value,
     precio: Number(precioGasto.value),
   };
