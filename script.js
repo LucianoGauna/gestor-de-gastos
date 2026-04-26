@@ -53,6 +53,11 @@ const renderizarGastos = () => {
 formGasto.addEventListener("submit", (event) => {
   event.preventDefault();
 
+  if (nombreGasto.value.trim() === "" || Number(precioGasto.value) <= 0) {
+    alert("Completá el nombre del gasto y un precio válido.");
+    return;
+  }
+
   const gasto = {
     nombre: nombreGasto.value,
     precio: Number(precioGasto.value),
