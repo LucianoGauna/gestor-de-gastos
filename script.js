@@ -1,12 +1,13 @@
-// Panel derecho
+// Panel izquierdo
 const listaGastos = document.querySelector("#listaGastos");
 const mensajeVacio = document.querySelector("#mensajeVacio");
 const totalGastos = document.querySelector("#totalGastos");
 
-// Panel izquierdo
+// Panel derecho
 const formGasto = document.querySelector("#formGasto");
 const nombreGasto = document.querySelector("#nombreGasto");
 const precioGasto = document.querySelector("#precioGasto");
+const btnBorrar = document.querySelector("#btnBorrar");
 
 let gastos = JSON.parse(localStorage.getItem("gastos")) || [];
 
@@ -98,6 +99,13 @@ formGasto.addEventListener("submit", (event) => {
   guardarGastos();
   renderizarGastos();
   calcularTotal();
+});
+
+// Borrar datos de formulario
+btnBorrar.addEventListener("click", () => {
+  nombreGasto.value = "";
+  precioGasto.value = "";
+  nombreGasto.focus();
 });
 
 // Renderizado inicial para actualizar la interfaz cuando se abre por primera vez
