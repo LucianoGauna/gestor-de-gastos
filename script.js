@@ -3,30 +3,12 @@ const listaGastos = document.querySelector("#listaGastos");
 const mensajeVacio = document.querySelector("#mensajeVacio");
 const totalGastos = document.querySelector("#totalGastos");
 
-// Panel izquierda
+// Panel izquierdo
 const formGasto = document.querySelector("#formGasto");
 const nombreGasto = document.querySelector("#nombreGasto");
 const precioGasto = document.querySelector("#precioGasto");
 
 const gastos = [];
-
-// Crear un gasto
-formGasto.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  const gasto = {
-    nombre: nombreGasto.value,
-    precio: Number(precioGasto.value),
-  };
-
-  gastos.push(gasto);
-
-  nombreGasto.value = "";
-  precioGasto.value = "";
-
-  renderizarGastos();
-  console.log("gastos", gastos);
-});
 
 // Renderizar gastos
 const renderizarGastos = () => {
@@ -55,3 +37,22 @@ const renderizarGastos = () => {
     listaGastos.appendChild(gastoElemento);
   });
 };
+
+// Crear un gasto
+formGasto.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const gasto = {
+    nombre: nombreGasto.value,
+    precio: Number(precioGasto.value),
+  };
+
+  gastos.push(gasto);
+
+  nombreGasto.value = "";
+  precioGasto.value = "";
+
+  renderizarGastos();
+
+  console.log("gastos", gastos);
+});
