@@ -62,7 +62,7 @@ const renderizarGastos = () => {
       </div>
 
       <div class="flex items-center gap-4">
-        <p class="font-bold text-[#141413]">$${gasto.precio}</p>
+        <p class="font-bold text-[#141413]">$${gasto.precio.toLocaleString("es-AR")}</p>
         <button
           class="rounded-[20px] bg-[#CF4500] px-4 py-2 text-sm text-white cursor-pointer"
           onclick="eliminarGasto(${gasto.id})"
@@ -80,8 +80,15 @@ const renderizarGastos = () => {
 formGasto.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  if (nombreGasto.value.trim() === "" || Number(precioGasto.value) <= 0) {
-    alert("Completá el nombre del gasto y un precio válido.");
+  if (nombreGasto.value.trim() === "") {
+    alert("Completá el nombre del gasto.");
+    nombreGasto.focus();
+    return;
+  }
+
+  if (Number(precioGasto.value) <= 0) {
+    alert("Ingresá un precio válido.");
+    precioGasto.focus();
     return;
   }
 
