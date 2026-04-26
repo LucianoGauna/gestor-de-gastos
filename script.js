@@ -81,9 +81,10 @@ const renderizarGastos = () => {
 
     const botonEliminar = document.createElement("button");
 
-    botonEliminar.textContent = "Eliminar";
+    botonEliminar.innerHTML = `<i class="fa-solid fa-trash"></i>`;
     botonEliminar.className =
-      "rounded-[20px] bg-[#CF4500] px-4 py-2 text-sm text-white cursor-pointer";
+      "flex h-8 w-8 items-center justify-center rounded-full bg-[#CF4500] text-sm text-white cursor-pointer";
+    botonEliminar.title = "Eliminar gasto";
 
     botonEliminar.addEventListener("click", () => {
       eliminarGasto(gasto.id);
