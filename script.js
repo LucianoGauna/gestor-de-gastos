@@ -10,6 +10,17 @@ const precioGasto = document.querySelector("#precioGasto");
 
 const gastos = [];
 
+// Calcular total de gastos
+const calcularTotal = () => {
+  let total = 0;
+
+  gastos.forEach((gasto) => {
+    total += gasto.precio;
+  });
+
+  totalGastos.textContent = `$${total}`;
+};
+
 // Renderizar gastos
 const renderizarGastos = () => {
   listaGastos.innerHTML = "";
@@ -53,6 +64,7 @@ formGasto.addEventListener("submit", (event) => {
   precioGasto.value = "";
 
   renderizarGastos();
+  calcularTotal();
 
   console.log("gastos", gastos);
 });
