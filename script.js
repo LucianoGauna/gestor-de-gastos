@@ -8,6 +8,7 @@ const cantidadGastos = document.querySelector("#cantidadGastos");
 const formGasto = document.querySelector("#formGasto");
 const nombreGasto = document.querySelector("#nombreGasto");
 const precioGasto = document.querySelector("#precioGasto");
+const categoriaGasto = document.querySelector("#categoriaGasto");
 const btnBorrar = document.querySelector("#btnBorrar");
 
 let gastos = JSON.parse(localStorage.getItem("gastos")) || [];
@@ -62,22 +63,37 @@ const renderizarGastos = () => {
     gastoElemento.className =
       "flex items-center justify-between rounded-[16px] border border-[#14141314] bg-white px-5 py-4 shadow-md";
 
-    gastoElemento.innerHTML = `
-      <div>
-        <h3 class="font-bold text-[#141413]">${gasto.nombre}</h3>
-        <p class="text-sm text-[#555555]">Gasto registrado</p>
-      </div>
+    const informacionGasto = document.createElement("div");
 
-      <div class="flex items-center gap-4">
-        <p class="font-bold text-[#141413]">$${gasto.precio.toLocaleString("es-AR")}</p>
-        <button
-          class="rounded-[20px] bg-[#CF4500] px-4 py-2 text-sm text-white cursor-pointer"
-          onclick="eliminarGasto(${gasto.id})"
-        >
-          Eliminar
-        </button>
-      </div>
+    informacionGasto.innerHTML = `
+      <h3 class="font-bold text-[#141413]">${gasto.nombre}</h3>
+      <p class="text-sm text-[#555555]">${gasto.categoria}</p>
     `;
+
+    const accionesGasto = document.createElement("div");
+
+    accionesGasto.className = "flex items-center gap-4";
+
+    const precioGastoElemento = document.createElement("p");
+
+    precioGastoElemento.className = "font-bold text-[#141413]";
+    precioGastoElemento.textContent = `$${gasto.precio.toLocaleString("es-AR")}`;
+
+    const botonEliminar = document.createElement("button");
+
+    botonEliminar.textContent = "Eliminar";
+    botonEliminar.className =
+      "rounded-[20px] bg-[#CF4500] px-4 py-2 text-sm text-white cursor-pointer";
+
+    botonEliminar.addEventListener("click", () => {
+      eliminarGasto(gasto.id);
+    });
+
+    accionesGasto.appendChild(precioGastoElemento);
+    accionesGasto.appendChild(botonEliminar);
+
+    gastoElemento.appendChild(informacionGasto);
+    gastoElemento.appendChild(accionesGasto);
 
     listaGastos.appendChild(gastoElemento);
   });
@@ -101,8 +117,9 @@ formGasto.addEventListener("submit", (event) => {
 
   const gasto = {
     id: Date.now(),
-    nombre: nombreGasto.value,
+    nombre: nombreGasto.value.trim(),
     precio: Number(precioGasto.value),
+    categoria: categoriaGasto.value,
   };
 
   gastos.push(gasto);
