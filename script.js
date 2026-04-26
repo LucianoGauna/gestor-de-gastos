@@ -8,7 +8,12 @@ const formGasto = document.querySelector("#formGasto");
 const nombreGasto = document.querySelector("#nombreGasto");
 const precioGasto = document.querySelector("#precioGasto");
 
-const gastos = [];
+let gastos = JSON.parse(localStorage.getItem("gastos")) || [];
+
+// Guardar gastos en localStorage
+const guardarGastos = () => {
+  localStorage.setItem("gastos", JSON.stringify(gastos));
+};
 
 // Calcular total de gastos
 const calcularTotal = () => {
@@ -27,6 +32,7 @@ const eliminarGasto = (id) => {
 
   if (indice !== -1) {
     gastos.splice(indice, 1);
+    guardarGastos();
   }
 
   renderizarGastos();
@@ -89,8 +95,11 @@ formGasto.addEventListener("submit", (event) => {
   nombreGasto.value = "";
   precioGasto.value = "";
 
+  guardarGastos();
   renderizarGastos();
   calcularTotal();
-
-  console.log("gastos", gastos);
 });
+
+// Renderizado inicial para actualizar la interfaz cuando se abre por primera vez
+renderizarGastos();
+calcularTotal();
