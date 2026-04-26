@@ -99,6 +99,8 @@ formGasto.addEventListener("submit", (event) => {
   guardarGastos();
   renderizarGastos();
   calcularTotal();
+
+  nombreGasto.focus();
 });
 
 // Borrar datos de formulario
