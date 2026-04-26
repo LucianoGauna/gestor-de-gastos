@@ -24,7 +24,7 @@ const calcularTotal = () => {
     total += gasto.precio;
   });
 
-  totalGastos.textContent = `$${total}`;
+  totalGastos.textContent = `$${total.toLocaleString("es-AR")}`;
 };
 
 // Eliminar un gasto
