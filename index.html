@@ -10,6 +10,10 @@
       href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>TP 1 - Gestor de gastos</title>
   </head>
@@ -86,17 +90,22 @@
             step="any"
             class="w-full rounded-full border border-[#14141314] px-6 py-3 focus:outline-none focus:border-[#141413] focus:border-[1.5px]"
           />
-          <select
-            id="categoriaGasto"
-            class="w-full rounded-full border border-[#14141314] px-6 py-3 focus:outline-none focus:border-[#141413] focus:border-[1.5px]"
-          >
-            <option value="Comida">Comida</option>
-            <option value="Transporte">Transporte</option>
-            <option value="Estudio">Estudio</option>
-            <option value="Servicios">Servicios</option>
-            <option value="Entretenimiento">Entretenimiento</option>
-            <option value="Otros">Otros</option>
-          </select>
+          <div class="relative">
+            <select
+              id="categoriaGasto"
+              class="w-full appearance-none rounded-full border border-[#14141314] px-6 py-3 pr-12 focus:outline-none focus:border-[#141413] focus:border-[1.5px]"
+            >
+              <option value="Comida">Comida</option>
+              <option value="Transporte">Transporte</option>
+              <option value="Estudio">Estudio</option>
+              <option value="Servicios">Servicios</option>
+              <option value="Entretenimiento">Entretenimiento</option>
+              <option value="Otros">Otros</option>
+            </select>
+            <i
+              class="fa-solid fa-chevron-down pointer-events-none absolute right-6 top-1/2 -translate-y-1/2 text-sm text-[#141413]"
+            ></i>
+          </div>
           <div class="w-full flex items-center justify-end gap-2 mt-2">
             <button
               type="button"
