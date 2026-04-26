@@ -16,7 +16,9 @@
   <body
     class="min-h-screen flex flex-col gap-4 px-4 py-3 font-['Sofia_Sans'] bg-[#F3F0EE]"
   >
-    <header class="flex flex-col flex-none gap-2 border-b border-[#14141314] pb-4">
+    <header
+      class="flex flex-col flex-none gap-2 border-b border-[#14141314] pb-4"
+    >
       <h1 class="text-5xl font-bold text-[#141413]">Gestor de gastos</h1>
       <p class="text-lg text-[#555555]">
         Registrá tus gastos y controlá tu dinero.
@@ -32,9 +34,19 @@
             </p>
           </div>
 
-          <div class="rounded-full bg-[#FCFBFA] px-5 py-3 flex items-center gap-2 shadow-sm select-none">
-            <span class="text-sm text-[#555555]">Total:</span>
-            <p id="totalGastos" class="text-[#141413] font-bold">$0</p>
+          <div class="flex items-center gap-4">
+            <div
+              class="rounded-full bg-[#FCFBFA] px-5 py-3 flex items-center gap-2 shadow-sm select-none"
+            >
+              <span class="text-sm text-[#555555]">Gastos:</span>
+              <p id="cantidadGastos" class="text-[#141413] font-bold">0</p>
+            </div>
+            <div
+              class="rounded-full bg-[#FCFBFA] px-5 py-3 flex items-center gap-2 shadow-sm select-none"
+            >
+              <span class="text-sm text-[#555555]">Total:</span>
+              <p id="totalGastos" class="text-[#141413] font-bold">$0</p>
+            </div>
           </div>
         </div>
 

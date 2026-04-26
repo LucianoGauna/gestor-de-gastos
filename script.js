@@ -2,6 +2,7 @@
 const listaGastos = document.querySelector("#listaGastos");
 const mensajeVacio = document.querySelector("#mensajeVacio");
 const totalGastos = document.querySelector("#totalGastos");
+const cantidadGastos = document.querySelector("#cantidadGastos");
 
 // Panel derecho
 const formGasto = document.querySelector("#formGasto");
@@ -27,6 +28,11 @@ const calcularTotal = () => {
   totalGastos.textContent = `$${total.toLocaleString("es-AR")}`;
 };
 
+// Actualizar cantidad de gastos
+const actualizarCantidad = () => {
+  cantidadGastos.textContent = gastos.length;
+};
+
 // Eliminar un gasto
 const eliminarGasto = (id) => {
   const indice = gastos.findIndex((gasto) => gasto.id === id);
@@ -38,6 +44,7 @@ const eliminarGasto = (id) => {
 
   renderizarGastos();
   calcularTotal();
+  actualizarCantidad();
 };
 
 // Renderizar gastos
@@ -106,6 +113,7 @@ formGasto.addEventListener("submit", (event) => {
   guardarGastos();
   renderizarGastos();
   calcularTotal();
+  actualizarCantidad();
 
   nombreGasto.focus();
 });
@@ -120,3 +128,4 @@ btnBorrar.addEventListener("click", () => {
 // Renderizado inicial para actualizar la interfaz cuando se abre por primera vez
 renderizarGastos();
 calcularTotal();
+actualizarCantidad();
