@@ -34,7 +34,7 @@ const renderizarGastos = () => {
     const gastoElemento = document.createElement("div");
 
     gastoElemento.className =
-      "flex items-center justify-between rounded-[16px] border border-[#14141314] bg-white px-5 py-4";
+      "flex items-center justify-between rounded-[16px] border border-[#14141314] bg-white px-5 py-4 shadow-md";
 
     gastoElemento.innerHTML = `
       <div>
