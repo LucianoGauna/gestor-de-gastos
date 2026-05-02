@@ -104,23 +104,41 @@ const renderizarGastos = () => {
 formGasto.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  if (nombreGasto.value.trim() === "") {
+  const nombreIngresado = nombreGasto.value.trim();
+  const precioIngresado = Number(precioGasto.value);
+  const categoriaIngresada = categoriaGasto.value;
+
+  if (nombreIngresado === "") {
     alert("Completá el nombre del gasto.");
     nombreGasto.focus();
     return;
   }
 
-  if (Number(precioGasto.value) <= 0) {
+  if (precioIngresado <= 0) {
     alert("Ingresá un precio válido.");
     precioGasto.focus();
     return;
   }
 
+  const gastoDuplicado = gastos.some((gasto) => {
+    return (
+      gasto.nombre.toLowerCase() === nombreIngresado.toLowerCase() &&
+      gasto.precio === precioIngresado &&
+      gasto.categoria === categoriaIngresada
+    );
+  });
+
+  if (gastoDuplicado) {
+    alert("Ese gasto ya fue registrado.");
+    nombreGasto.focus();
+    return;
+  }
+
   const gasto = {
     id: Date.now(),
-    nombre: nombreGasto.value.trim(),
-    precio: Number(precioGasto.value),
-    categoria: categoriaGasto.value,
+    nombre: nombreIngresado,
+    precio: precioIngresado,
+    categoria: categoriaIngresada,
   };
 
   gastos.push(gasto);
@@ -140,6 +158,7 @@ formGasto.addEventListener("submit", (event) => {
 btnBorrar.addEventListener("click", () => {
   nombreGasto.value = "";
   precioGasto.value = "";
+  categoriaGasto.value = "Comida";
   nombreGasto.focus();
 });
 

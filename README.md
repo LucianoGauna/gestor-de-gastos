@@ -4,6 +4,8 @@ Aplicación web desarrollada con HTML, Tailwind CSS y JavaScript puro.
 
 Permite registrar gastos personales, visualizarlos en pantalla, eliminarlos, calcular el total gastado y guardar la información en localStorage.
 
+También evita registrar gastos duplicados cuando coinciden el nombre, el precio y la categoría.
+
 ## Funcionalidades
 
 - Agregar gastos con nombre, precio y categoría.
@@ -11,6 +13,7 @@ Permite registrar gastos personales, visualizarlos en pantalla, eliminarlos, cal
 - Eliminar gastos.
 - Calcular el total gastado.
 - Mostrar la cantidad de gastos registrados.
+- Evitar gastos duplicados.
 - Persistir datos usando localStorage.
 
 ## Tecnologías utilizadas
