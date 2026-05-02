@@ -66,7 +66,7 @@ const renderizarGastos = () => {
     const informacionGasto = document.createElement("div");
 
     informacionGasto.innerHTML = `
-      <h3 class="font-bold text-[#141413]">${gasto.nombre}</h3>
+      <h3 class="font-bold max-w-[150px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] xl:max-w-full truncate text-[#141413]">${gasto.nombre}</h3>
       <p class="text-sm text-[#555555]">${gasto.categoria}</p>
     `;
 
@@ -76,7 +76,7 @@ const renderizarGastos = () => {
 
     const precioGastoElemento = document.createElement("p");
 
-    precioGastoElemento.className = "font-bold text-[#141413]";
+    precioGastoElemento.className = "font-bold max-w-[150px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] xl:max-w-full truncate text-[#141413]";
     precioGastoElemento.textContent = `$${gasto.precio.toLocaleString("es-AR")}`;
 
     const botonEliminar = document.createElement("button");
